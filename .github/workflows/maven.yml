@@ -13,10 +13,11 @@ on:
  # pull_request:
  #   branches: [ "main" ]
   workflow_dispatch:
-    input:
+    inputs:
       environment:
         description: 'Environment to run tests against'
         required: true
+        default: Test
         type: choice
         options:
           - Test
