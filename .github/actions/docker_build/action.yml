@@ -9,5 +9,6 @@ runs:
   using: composite
   steps:
     - run: |
-        docker build . --file Dockerfile --tag academy:$(date+%s)
+        docker build . --file Dockerfile --tag academy:$(date
+        +%s)
       shell: bash
