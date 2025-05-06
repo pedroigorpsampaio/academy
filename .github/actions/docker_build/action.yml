@@ -1,13 +1,24 @@
 name: Docker-Action-Ex
 description: Example-Action-Docker
 inputs:
-  replace_with_your_input_name:
-    description: "Replace-With-Your-Input-Description"
+  path_dockerfile:
+    description: "Path-to-the-docker-file"
     required: false
-    default: "Replace-With-Your-Input-Default-Value"
+    default: "Dockerfile"
+  image_name:
+    description: "Name-of-the-image"
+    required: false
+  tag_name:
+    description: "Tag-name"
+    required: false
 runs:
   using: composite
   steps:
     - run: |
-        docker build . --file Dockerfile --tag academy:$(date +%s)
+        if [ -z "${{ inputs.tag_name }}" ]; then
+          export TAG=$(date +%s)
+        else
+          export TAG="${{ inputs.tag_name }}"
+        fi
+        docker build . --file "${{ inputs.path_dockerfile }}" --tag academy:$TAG
       shell: bash
