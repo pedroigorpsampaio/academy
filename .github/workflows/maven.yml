@@ -32,7 +32,7 @@ on:
 
 env:
     image_name: academy
-    tag_name: ${{inputs.tag}}:${{inputs.environment}}
+    tag_name: ${{inputs.tag}}-${{inputs.environment}}
     artifact_name: artifact-cicd
 
 jobs:
