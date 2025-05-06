@@ -8,11 +8,16 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+ # push:
+ #   branches: [ "main" ]
+ # pull_request:
+ #   branches: [ "main" ]
   workflow_dispatch:
+    input:
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 
 env:
     image_name: academy
@@ -77,6 +82,8 @@ jobs:
     runs-on: ubuntu-latest
 
     needs: build
+
+    environment: ${{ inputs.environment }}
 
     steps:
     - uses: actions/checkout@v4
