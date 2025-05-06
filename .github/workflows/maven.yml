@@ -41,7 +41,7 @@ jobs:
         tag_name: $tag_name
 
     - name: Save docker image
-      run: docker save -o $image_name.tar $image_name:$tag_name
+      run: docker save -o "${image_name}.tar" "${image_name}:${tag_name}"
   test:
 
     runs-on: ubuntu-latest
