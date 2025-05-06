@@ -1,0 +1,17 @@
+name: Docker-Push
+description: Docker-Push-Action
+inputs:
+  docker_username:
+    description: "Docker-username"
+    required: true
+  docker_image:
+    description: "Docker-image"
+    required: true
+runs:
+  using: composite
+  steps:
+    - run: |
+        docker tag "${{ inputs.docker_image }}"
+        "${{inputs.docker_username}}/${{ inputs.docker_image}}"
+        docker push "${{inputs.docker_username}}/${{inputs.docker_image}}"
+      shell: bash
