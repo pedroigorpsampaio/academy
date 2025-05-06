@@ -36,6 +36,10 @@ jobs:
         image_name: 'academy-cicd'
         tag_name: 'cicd'
 
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: List docker images
       run: docker image ls
-
