@@ -1,0 +1,8 @@
+name: ActionEx
+description: Example-of-Action
+runs:
+  using: composite
+  steps:
+    - run: |
+        echo "Update me with the necessary commands"
+      shell: bash
