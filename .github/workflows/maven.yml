@@ -42,7 +42,13 @@ jobs:
         tag_name: $tag_name
 
     - name: Save docker image
-      run: docker save -o "${{ env.image_name }}.tar" "${{env.image_name}}:${{ env.tag_name}}"
+      run: docker save -o "${{ env.image_name }}.tar" ${{env.image_name}}:${{ env.tag_name}}
+
+    - uses: actions/upload-artifact@v4
+      name: Upload docker image
+      with:
+        name: $artifact_name
+        path: "${{env.image_name}}.tar"
 
   test:
 
