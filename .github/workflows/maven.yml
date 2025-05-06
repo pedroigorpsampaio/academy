@@ -1,5 +1,4 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -27,10 +26,9 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-   
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    
+
     - name: Build docker image
-      run: docker build . --file Dockerfile 
-      --tag academy:$(date +%s)
+      run: docker build . --file Dockerfile --tag academy:$(date +%s)
