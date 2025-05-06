@@ -6,6 +6,7 @@
 # documentation.
 
 name: Java CI with Maven
+run-name: Docker build and push to "${{ inputs.environment }}"
 
 on:
  # push:
@@ -31,7 +32,7 @@ on:
 
 env:
     image_name: academy
-    tag_name: "${{inputs.tag}}"
+    tag_name: ${{inputs.tag}}:${{inputs.environment}}
     artifact_name: artifact-cicd
 
 jobs:
