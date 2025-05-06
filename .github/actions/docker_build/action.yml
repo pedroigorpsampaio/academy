@@ -1,0 +1,14 @@
+name: Docker-Action-Ex
+description: Example-Action-Docker
+inputs:
+  replace_with_your_input_name:
+    description: "Replace-With-Your-Input-Description"
+    required: false
+    default: "Replace-With-Your-Input-Default-Value"
+runs:
+  using: composite
+  steps:
+    - run: |
+        docker build . --file [path_to_dockerfile] --tag academy:$(date
+        +%s)
+      shell: bash
