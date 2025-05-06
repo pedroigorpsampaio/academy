@@ -16,6 +16,7 @@ on:
 env:
     image_name: academy-cicd
     tag_name: cicd
+    artifact_name: artifact-cicd
 
 jobs:
   build:
@@ -41,7 +42,7 @@ jobs:
         tag_name: $tag_name
 
     - name: Save docker image
-      run: docker save -o "${{ env.image_name }}.tar" $image_name:$tag_name
+      run: docker save -o "${{ env.image_name }}.tar" "${{env.image_name}}:${{ env.tag_name}}"
 
   test:
 
